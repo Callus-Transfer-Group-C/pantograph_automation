@@ -1,0 +1,19 @@
+[project]
+name = "5bar_control"
+version = "0.0.1"
+authors = [
+  { name="David Alexander", email="dmalexa5@ncsu.edu" },
+]
+description = "Control system for pentagraph-style dynamics"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "Apache-2.0"
+license-files = ["LICENSE.txt"]
+
+[project.urls]
+Homepage = "https://github.com/Callus-Transfer-Group-C/5bar_control"
+Issues = "https://github.com/Callus-Transfer-Group-C/5bar_control/issues"
