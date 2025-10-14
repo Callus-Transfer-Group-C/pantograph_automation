@@ -1,0 +1,5 @@
+*venv
+.pytest*
+__pycache__
+
+debug.py
