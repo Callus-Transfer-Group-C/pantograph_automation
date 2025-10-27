@@ -22,3 +22,14 @@ class Servo:
 
     def __init__(self):
         pass
+
+    def position(self, position:int):
+
+        print(f"Went to position {position}")
+
+        pass
+
+if __name__ == "__main__":
+
+    motor = Servo()
+    motor.position(85)
