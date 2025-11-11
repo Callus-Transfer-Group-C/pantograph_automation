@@ -29,7 +29,7 @@ from PySide6.QtCore import QObject, Signal, Slot
 import time, traceback, sys
 
 
-# TODO: Implement task
+# TODO: Implement task stack
 class TaskStack(QObject):
     finished = Signal()  # No arguments
     error = Signal(tuple) # Emits (type, value, traceback)
@@ -94,7 +94,7 @@ class TaskStack(QObject):
 
         pass
 
-# TODO: Implement task
+# TODO: Implement tasks
 class Task:
     """
     Template for creating tasks used by the ui package.
@@ -136,3 +136,19 @@ class Task:
         """
 
         raise NotImplementedError("'run' has not yet been implemented")
+    
+class Initialize(Task):
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+
+        # Configure and check camera
+        # Configure and check stepper motors
+        # Configure and check servo motor
+
+        # Home stepper motors
+
+
+        return

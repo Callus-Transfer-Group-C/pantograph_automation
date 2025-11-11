@@ -5,3 +5,9 @@
 # gpio control than earlier versions.
 #
 # Long story short, whatever we write will not be backwards compatible. And that's okay!!
+
+from pantograph_control import drivers
+
+motor = drivers.Servo()
+
+motor.position(65)

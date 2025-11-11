@@ -49,18 +49,13 @@ pip install -e .
 
 ## Usage
 
-```bash
-# Example usage command
-pantograph_control run example --params
-```
-
-TODO: _Explain how to run the system, including any required arguments or configuration._
+_Explain how to run the system, including any neccessary screenshots._
 
 ---
 
 ## Configuration
 
-TODO: _Describe configuration options, environment variables, or files to edit._
+_Describe configuration options, environment variables, or files to edit._
 
 ---
 

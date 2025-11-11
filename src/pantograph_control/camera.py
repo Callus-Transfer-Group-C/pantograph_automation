@@ -12,17 +12,17 @@ import os
 # 6. For each component compute centroid (or fit a circle) and optionally filter by size and circularity.
 # 7. Build arr = np.vstack([x_pixels, y_pixels, np.full(n, z)]) → shape (3, n).
 # TODO: Camera <-> pi interface
-# https://github.com/waveform80/picamera/tree/release-1.13
+# https://github.com/raspberrypi/picamera2/tree/main
 #
 # TODO: Build CV pipeline
 
 class Camera:
 
     def __init__(self, position: NDArray[np.float64]):
-        ''' TODO: Docstring for camera class
+        ''' Docstring for camera class
         '''
 
-        assert position.shape == (3,) # Must be a point in eucelidean space
+        assert position.shape == (3,), "Must be a point in eucelidean space"
 
         self.position = position
 
@@ -44,7 +44,7 @@ class Camera:
             closest_to (np.ndarray): The input point used to find its nearest neighbor
 
         Raises:
-            TODO: Exception: There is already a next point available
+            Exception: There is already a next point available
         """
 
         assert self.__is_next_point == False, "There is already a next point available"
@@ -62,8 +62,8 @@ class Camera:
         Updates self.next_image with next image from a raspberry pi camera.
 
         Raises:
-            TODO: Exception: Raised when camera connection fails
-            TODO: Exception: Raised when there is already an image available
+            Exception: Raised when camera connection fails
+            Exception: Raised when there is already an image available
         """
 
         assert self.__is_next_image == False, "There is already a next image available"
@@ -77,8 +77,6 @@ class Camera:
     def get_points(self) -> None:
         """
         Updates self.points with next image from a raspberry pi camera.
-
-            TODO: get_points remaining docstring
         """
         
         return
@@ -92,15 +90,15 @@ class Camera:
                                       by default will not save the image at all
 
         Raises:
-            TODO: Exception: Raised when camera connection fails
-            TODO: Exception: Raised when a picture cannot be taken for some reason
+            Exception: Raised when camera connection fails
+            Exception: Raised when a picture cannot be taken for some reason
 
         Seperating this method from get_image allows photos to be saved externally
         without interfering with the CV pipeline sequence
         """
 
         if not filepath:
-            # TODO: Add interface to save the image to a filepath if requested
+            # Add interface to save the image to a filepath if requested
             pass
 
         return np.ndarray(np.float64)

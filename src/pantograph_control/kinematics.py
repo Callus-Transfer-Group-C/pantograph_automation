@@ -6,11 +6,9 @@ def compute_joint_angles(
     a1: float, a2: float, a3: float, a4: float, a5: float,
     P1: NDArray[np.float64], P3: NDArray[np.float64], P5: NDArray[np.float64]
 ) -> Tuple[float, float]:
-    # TODO: Update url with link
-    # TODO: Add ValueError test
     """
     Compute joint angles given a pantograph end point. Follows the coordinate system and ik equations
-    detailed in this paper: <URL>
+    detailed in this paper: https://www.researchgate.net/publication/4196068_The_Pantograph_Mk-II_A_haptic_instrument
 
     Args:
         a1, a2, a3, a4, a5 (float or int): The link lengths of the pantograph

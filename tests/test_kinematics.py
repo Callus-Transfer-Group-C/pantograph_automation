@@ -12,7 +12,6 @@ def test_out_of_bounds():
     P1 = np.array([0, 0])
     P5 = np.array([-a5, 0])
 
-    # TODO: Test over a range of values know to be outside of the specified configuration
     x = 2
     y = 10
 

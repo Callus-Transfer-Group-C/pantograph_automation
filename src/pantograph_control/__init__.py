@@ -8,7 +8,8 @@ LINKS = {
     "L5": 2
 }
 
-# TODO: Project vec(stack_z_offset -> edge of petri) onto vec(stack_z_offset -> transfer peak) to get safety ensured waypoint
+# TODO: Implement all trajectory points
+# Project vec(stack_z_offset -> edge of petri) onto vec(stack_z_offset -> transfer peak) to get safety ensured waypoint
 TRANSFER_OUT_ORIGIN = np.array([-0.3, 0.5, 0.02])
 TRANSFER_IN_ORIGIN = np.array([0.3, 0.5, 0.02])
 
@@ -16,7 +17,6 @@ STACK_WAYPOINT_Z = 0.25 # meters
 STACK_WAYPOINT_Z_OFFSET = STACK_WAYPOINT_Z + 0.02 # meters
 
 # Stack points
-# TODO: Confirm semantic clarity
 STACK_OUT_FULL_ORIGIN = np.array([0, 0, 0])
 STACK_IN_WASTE_ORIGIN = np.array([0, 0, 0])
 
