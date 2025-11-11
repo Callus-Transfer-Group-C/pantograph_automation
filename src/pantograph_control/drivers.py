@@ -15,15 +15,90 @@ import math
 
 class Stepper(object):
 
-    def __init__(self, enable, dir, pulse, steps_per_rev=1600):
-        '''  '''
+    def __init__(self, enable:int, dir:int, pulse:int, steps_per_rev:int=1600, speed:int=60) -> None:
+        '''Initialize the motor driver instance.
+
+        Args:
+            enable : int
+                GPIO pin number or control object used to enable/disable the motor driver.
+            dir : int
+                GPIO pin number or control object used to set the motor direction.
+            pulse : int
+                GPIO pin number or control object used to send step/pulse signals. 1 pulse = 1 step.
+            steps_per_rev : int, optional
+                Number of microsteps per full revolution. Defaults to 1600.
+            speed : int | float, optional
+                Motor speed in revolutions per minute (RPM). Defaults to 60.
+        '''
         self.steps_per_rev = steps_per_rev
         self.position = 0 # Position in radians
 
+        self.ENA = enable
+        self.DIR = dir
+        self.PUL = pulse
 
-    def step(self, steps):
+        self.speed = speed # in rpm
 
-        for 
+        GPIO.setup(self.PUL, GPIO.OUT)
+        GPIO.setup(self.DIR, GPIO.OUT)
+        GPIO.setup(self.ENA, GPIO.OUT)
+        GPIO.output(self.DIR, GPIO.HIGH)
+        GPIO.output(self.PUL, GPIO.HIGH)
+
+        self.enable()
+        return
+
+        
+    def enable(self) -> None:
+        GPIO.output(self.ENA, GPIO.HIGH)
+        return
+    
+    def direction(self, direction:bool=True) -> None:
+        ''' Sets the motor direction
+            
+            direction : bool
+                The direction to rotate. True is forward, False is reverse
+        '''
+
+        val = GPIO.HIGH if direction else GPIO.LOW
+
+        GPIO.output(self.DIR)
+        return
+    
+    def pulse(self, delay):
+        ''' Pulses the pulse pin once with a specified delay.
+        
+            Args:
+                delay : float or int
+                    seconds per GPIO output
+                    = seconds per pulse/2'''
+
+        GPIO.output(self.PUL, GPIO.LOW)
+        sleep(delay)
+        GPIO.output(self.PUL, GPIO.HIGH)
+        sleep(delay)
+
+        return
+
+    def step(self, steps:int, direction:bool=True) -> None:
+        ''' Steps the stepper motor a certain number of steps in a direction.
+        
+            Args:
+                steps : int
+                    The number of steps to rotate
+                direction : bool
+                    The direction to rotate. True is forward, False is reverse
+            
+            Calculates delay based on speed and steps per rotation
+        '''
+
+        delay = 1 / (60 * self.steps_per_rev * self.speed) # seconds per pulse
+        delay /= 2 # Seconds per gpio output
+
+        for step in range(steps):
+            self.pulse(delay)
+
+
 
 
 class Servo:
