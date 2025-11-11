@@ -6,8 +6,6 @@
 # to have a calibration mechanism built in to the driver that can be accessed through the
 # 'Calibrate' task
 
-import sys
-import time
 
 from time import sleep
 import RPi.GPIO as GPIO
@@ -39,6 +37,7 @@ class Stepper(object):
 
         self.speed = speed # in rpm
 
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.PUL, GPIO.OUT)
         GPIO.setup(self.DIR, GPIO.OUT)
         GPIO.setup(self.ENA, GPIO.OUT)
@@ -62,7 +61,7 @@ class Stepper(object):
 
         val = GPIO.HIGH if direction else GPIO.LOW
 
-        GPIO.output(self.DIR)
+        GPIO.output(self.DIR, val)
         return
     
     def pulse(self, delay):
@@ -72,7 +71,7 @@ class Stepper(object):
                 delay : float or int
                     seconds per GPIO output
                     = seconds per pulse/2'''
-
+        print(delay)
         GPIO.output(self.PUL, GPIO.LOW)
         sleep(delay)
         GPIO.output(self.PUL, GPIO.HIGH)
@@ -92,11 +91,17 @@ class Stepper(object):
             Calculates delay based on speed and steps per rotation
         '''
 
-        delay = 1 / (60 * self.steps_per_rev * self.speed) # seconds per pulse
-        delay /= 2 # Seconds per gpio output
-
+        delay = 0.5 * 60 / (self.steps_per_rev * self.speed) # seconds per pulse
+        print(delay)
+        
         for step in range(steps):
-            self.pulse(delay)
+            GPIO.output(self.PUL, GPIO.LOW)
+            sleep(delay)
+            GPIO.output(self.PUL, GPIO.HIGH)
+            sleep(delay)
+    
+    def cleanup(self):
+        GPIO.cleanup()
 
 
 
