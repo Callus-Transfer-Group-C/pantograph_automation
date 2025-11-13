@@ -24,7 +24,6 @@
 # and the TaskStack takes care of the rest.
 
 
-from pantograph_control import camera, drivers, kinematics, trajectory
 from PySide6.QtCore import QObject, Signal, Slot
 import time, traceback, sys
 

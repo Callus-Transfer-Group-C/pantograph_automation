@@ -47,9 +47,7 @@ def compute_end_point(
     theta1: float, theta5: float
 ) -> NDArray[np.float64]:
     """
-    Compute joint angles given a pantograph end point. Follows the coordinate system and ik equations\n
-    detailed in this paper: <URL>
-
+    Compute end point given a joint configuration.
     Args:
         a1, a2, a3, a4, a5 (float or int): The link lengths of the pantograph
         P1, P5 (float or int): The xy space location of the base joints
@@ -62,7 +60,7 @@ def compute_end_point(
         OutOfBoundsException: If P3 is out of reach of the end effector.
         ValueError: If the distance between P1 and P5 != a5
     """
-    # TODO: Update url
+    raise NotImplementedError('Forward kinematcis are not yet implemented')
 
     if not (_dist(P1, P5) == a5):
         raise ValueError(f"P1: {P1} and P5: {P5} are further apart than the length of a5: {a5}")

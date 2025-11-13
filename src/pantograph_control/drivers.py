@@ -63,6 +63,11 @@ class Stepper(object):
         ''' Enables the stepper motor. '''
         GPIO.output(self.ENA, GPIO.HIGH)
         return
+
+    def disable(self) -> None:
+        ''' Disable the stepper motor. '''
+        GPIO.output(self.ENA, GPIO.LOW)
+        return
     
     def direction(self, direction:bool=True) -> None:
         ''' Sets the motor direction.
@@ -112,7 +117,8 @@ class Stepper(object):
         '''
 
         delay = 0.5 * 60 / (self.steps_per_rev * self.speed) # seconds per pulse
-        print(delay)
+
+        self.direction(direction)
         
         for _ in range(steps):
             GPIO.output(self.PUL, GPIO.LOW)
