@@ -248,6 +248,12 @@ class Pantograph:
         self.joint1.set_position(np.pi/4)
         self.joint2.set_position(3*np.pi/4)
 
+    def cleanup(self):
+
+        self.joint1.stepper.cleanup()
+        self.joint2.stepper.cleanup()
+        self.z_stage.stepper.cleanup()
+
 
     
 

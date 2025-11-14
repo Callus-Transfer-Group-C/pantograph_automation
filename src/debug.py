@@ -43,13 +43,21 @@ while True:
                 (-26, 16),
                 (15, 16),
                 (-26, 16),
-                (15, 16)
+                (15, 16),
+                (-6.5, 15)
             ]
 
             for point in points:
 
                 print(f'Moving to {point}')
                 pantograph.moveto(np.array([point[0], point[1]]))
+        
+        case 'p_specific':
+
+            point = (-6.5, 16)
+
+            print(f'Moving to {point}')
+            pantograph.moveto(np.array([point[0], point[1]]))
         
         case 'z':
             pantograph.move_z(4000, True)
@@ -60,3 +68,7 @@ while True:
             pantograph.gripper.open()
             sleep(0.5)
             pantograph.gripper.close()
+        
+        case 'exit':
+            pantograph.cleanup()
+            break
